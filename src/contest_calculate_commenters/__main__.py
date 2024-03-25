@@ -93,8 +93,11 @@ for author in authors:
         if name in story.commenters:
             author.commented_on.append(story)
 
+print("")
+print(f"Number of stories: {len(stories)}")
+print("")
 for author in authors:
-    print(f"'{author.name}' author of the story '{author.story.title}' ({author.story.length}) commented on {len(author.commented_on)} stories{'.' if len(author.commented_on) == 0 else ':' }")
+    print(f"'{author.name}' author of the story '{author.story.title}' ({author.story.length}) commented on {len(author.commented_on)} ({round(len(author.commented_on)/len(stories)*100, 2)}%) stories{'.' if len(author.commented_on) == 0 else ':' }")
     for story in author.commented_on:
         print(f"{story.title} : {story.url}")
     print("")
